@@ -1,0 +1,34 @@
+<main
+  class="w-full h-full bg-slate-900/50 rounded-xl border-4 border-lime-200 text-white flex space-x-5 py-5 px-5"
+>
+  <!-- Tabla y apartado para subir archivos -->
+  <section class="bg-slate-700/50 w-2/3 h-full rounded-xl">
+    <div
+      *ngIf="numFilas > 0 && numColumnas > 0"
+      class="w-full h-[90%] text-center flex justify-center"
+    >
+      <table class="">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="w-10 pb-5" *ngFor="let letra of letrasColumnas">
+              {{ letra }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let fila of mapa; let i = index">
+            <th class="pr-5">{{ i + 1 }}</th>
+            <td class="border" *ngFor="let celda of fila">{{ celda }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="w-full h-[10%] flex justify-center items-center">
+      <input type="file" (change)="cargarMapa($event)" />
+    </div>
+  </section>
+
+  <section class="bg-lime-300 w-1/3 h-full rounded-xl"></section>
+</main>

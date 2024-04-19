@@ -1,0 +1,28 @@
+/* mapa.component.css */
+
+.mapa {
+  display: flex;
+  flex-direction: column;
+}
+
+.fila {
+  display: flex;
+}
+
+.fila-header,
+.columna-header {
+  width: 50px; /* Ajusta el tamaño según tus necesidades */
+  height: 50px; /* Ajusta el tamaño según tus necesidades */
+  text-align: center;
+  border: 1px solid black; /* Borde para cada celda */
+}
+
+.celda {
+  width: 50px; /* Ajusta el tamaño según tus necesidades */
+  height: 50px; /* Ajusta el tamaño según tus necesidades */
+  border: 1px solid black; /* Borde para cada celda */
+}
+
+.celda-content {
+  /* Estilos para el contenido de cada celda */
+}
