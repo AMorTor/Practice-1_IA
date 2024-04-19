@@ -19,7 +19,11 @@
         <tbody>
           <tr *ngFor="let fila of mapa; let i = index">
             <th class="pr-5">{{ i + 1 }}</th>
-            <td class="border" *ngFor="let celda of fila">{{ celda }}</td>
+
+            <td
+              *ngFor="let celda of fila"
+              [ngStyle]="{ 'background-color': getColor(celda) }"
+            ></td>
           </tr>
         </tbody>
       </table>

@@ -61,4 +61,21 @@ export class TableComponent {
       this.letrasColumnas.push(letra);
     }
   }
+
+  getColor(valor: number): string {
+    switch (valor) {
+      case 0:
+        return 'darkgrey'; // Pared
+      case 1:
+        return '#FFCC99'; // Color carne
+      case 2:
+        return '#ADD8E6'; // Color del agua
+      case 3:
+        return '#FFD700'; // Color de la arena
+      case 4:
+        return '#00FF00'; // Color verde
+      default:
+        return 'gray'; // Por defecto
+    }
+  }
 }
