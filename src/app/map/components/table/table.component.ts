@@ -12,6 +12,12 @@ export class TableComponent {
   numColumnas: number = 0;
   letrasColumnas: string[] = [];
 
+  coordenadas: string = '';
+  valorCelda: number | undefined;
+
+  coordenadasModificar: string = '';
+  nuevoValor: number | undefined;
+
   constructor(private mapLoader: MapLoaderService) {
     this.cargarMapaPorDefecto();
   }
@@ -76,6 +82,39 @@ export class TableComponent {
         return '#00FF00'; // Color verde
       default:
         return 'gray'; // Por defecto
+    }
+  }
+  consultarCelda() {
+    const [fila, columna] = this.coordenadas.split(',');
+    const filaNum = parseInt(fila.trim()) - 1;
+    const columnaNum = columna.trim().toUpperCase().charCodeAt(0) - 65;
+
+    if (
+      filaNum >= 0 &&
+      filaNum < this.mapa.length &&
+      columnaNum >= 0 &&
+      columnaNum < this.mapa[0].length
+    ) {
+      this.valorCelda = this.mapa[filaNum][columnaNum];
+    } else {
+      this.valorCelda = undefined;
+    }
+  }
+
+  cambiarValor() {
+    const [fila, columna] = this.coordenadasModificar.split(',');
+    const filaNum = parseInt(fila.trim()) - 1;
+    const columnaNum = columna.trim().toUpperCase().charCodeAt(0) - 65;
+
+    if (
+      filaNum >= 0 &&
+      filaNum < this.mapa.length &&
+      columnaNum >= 0 &&
+      columnaNum < this.mapa[0].length
+    ) {
+      this.mapa[filaNum][columnaNum] = this.nuevoValor || 0;
+    } else {
+      console.error('Coordenadas inválidas');
     }
   }
 }

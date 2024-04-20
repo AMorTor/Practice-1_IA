@@ -23,6 +23,7 @@
             <td
               *ngFor="let celda of fila"
               [ngStyle]="{ 'background-color': getColor(celda) }"
+              class="border-[1px] border-gray-950/10"
             ></td>
           </tr>
         </tbody>
@@ -34,5 +35,67 @@
     </div>
   </section>
 
-  <section class="bg-lime-300 w-1/3 h-full rounded-xl"></section>
+  <section class="bg-lime-300 w-1/3 h-full rounded-xl p-5 flex-col space-y-5">
+    <form
+      (ngSubmit)="consultarCelda()"
+      class="text-black w-full h-1/4 flex-col space-x-5 justify-center items-center bg-yellow-100 rounded-lg p-5"
+    >
+      <div class="flex-col space-y-2 w-full h-3/4">
+        <div class="flex justify-between items-center space-x-5">
+          <label class="w-1/4">Coordenadas:</label>
+          <input
+            type="text"
+            [(ngModel)]="coordenadas"
+            name="coordenadas"
+            class="text-center h-10 w-3/4 bg-white rounded-lg"
+            placeholder="Por ejemplo: 7,E"
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+        >
+          Consultar
+        </button>
+      </div>
+      <div class="w-full h-1/4 flex justify-center items-center">
+        <p class="text-black">
+          Valor :
+          <span class="text-2xl text-orange-400 mx-5"> {{ valorCelda }}</span>
+        </p>
+      </div>
+    </form>
+    <!-- Cambiar valor -->
+    <form
+      (ngSubmit)="consultarCelda()"
+      class="text-black w-full h-1/4 flex space-x-5 justify-center items-center bg-yellow-100 rounded-lg p-5"
+    >
+      <form (ngSubmit)="cambiarValor()">
+        <label>Coordenadas:</label>
+        <input
+          type="text"
+          [(ngModel)]="coordenadasModificar"
+          name="coordenadasModificar"
+          placeholder="Ej: 7,E"
+          required
+        />
+        <label>Nuevo Valor:</label>
+        <input
+          type="number"
+          [(ngModel)]="nuevoValor"
+          name="nuevoValor"
+          required
+        />
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Cambiar Valor
+        </button>
+      </form>
+    </form>
+
+    <div class=""></div>
+  </section>
 </main>
